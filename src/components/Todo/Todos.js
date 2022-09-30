@@ -2,7 +2,7 @@ import { useContext, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext';
 import { useTodos } from '../../hooks/useTodos';
-import { createTodo, toggleTodo } from '../../services/todos';
+import { createTodo, deleteTodo, toggleTodo } from '../../services/todos';
 
 
 
@@ -31,6 +31,11 @@ export default function Todos() {
     setTodos(prev => prev.map(todo => todo.id === id ? 
       { ...todo, complete: !todo.complete } : todo));
   };
+
+  const handleDeleteTodo = async (id) => {
+    const deletedItem = await deleteTodo(id);
+    setTodos((prevState) => prevState.filter((prevTodo) => prevTodo.id !== deletedItem.id));
+  };
   
 
   return (
@@ -46,6 +51,9 @@ export default function Todos() {
       {todos.map((todo) => (
         <div key={todo.id}>
           <label>
+            <button onClick={() => handleDeleteTodo(todo.id)}>
+            X
+            </button>
             <input type="checkbox"
               checked={todo.complete}
               onChange={() => handleCompleteTodo(todo)} />
