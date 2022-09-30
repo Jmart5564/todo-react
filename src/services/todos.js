@@ -14,9 +14,7 @@ export async function createTodo(description) {
 export async function toggleTodo({ id, complete }) {
   const response = await client
     .from('todos')
-    .update({ complete: !complete })
-    .match({ id })
-    .single();
-
+    .update({ complete })
+    .eq('id', id);
   return checkError(response);
 }
