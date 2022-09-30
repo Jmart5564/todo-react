@@ -1,0 +1,16 @@
+.header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 2fr; 
+}
+
+.header-h1 {
+    grid-column: 2/3;
+    text-transform: capitalize;
+    font-size: 40px;
+}
+
+.doit {
+    grid-column: 2/3;
+    grid-row: 2;
+}
