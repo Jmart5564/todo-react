@@ -21,9 +21,9 @@ export default function Header() {
       <div className='doit'>
         <img src={`${process.env.PUBLIC_URL}/images/doit.gif`}/>
       </div>
-      <h1 className='header-h1'>Just Do It {user.email.substring(0, user.email.lastIndexOf('@'))}!</h1>
       {user && (
         <div>
+          <h1 className='header-h1'>Just Do It {user.email.substring(0, user.email.lastIndexOf('@'))}!</h1>
           <div className='username'>hello {user.email.substring(0, user.email.lastIndexOf('@'))}</div>
           <button onClick={handleLogout}>Sign Out</button>
         </div>
