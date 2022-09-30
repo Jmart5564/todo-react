@@ -16,18 +16,18 @@ export default function Header() {
     }
   };
 
-  return (
+  if (user) return (
     <div className='header'>
       <div className='doit'>
         <img src={`${process.env.PUBLIC_URL}/images/doit.gif`}/>
       </div>
-      {user && (
-        <div>
-          <h1 className='header-h1'>Just Do It {user.email.substring(0, user.email.lastIndexOf('@'))}!</h1>
-          <div className='username'>hello {user.email.substring(0, user.email.lastIndexOf('@'))}</div>
-          <button onClick={handleLogout}>Sign Out</button>
-        </div>
-      )}
+      <h1 className='header-h1'>Just Do It {user.email.substring(0, user.email.lastIndexOf('@'))}!</h1>
+      
+      <div>
+        <div className='username'>hello {user.email.substring(0, user.email.lastIndexOf('@'))}</div>
+        <button onClick={handleLogout}>Sign Out</button>
+      </div>
+      
     </div>
   );
 }
