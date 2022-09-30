@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext';
 import { useTodos } from '../../hooks/useTodos';
 import { createTodo, deleteTodo, toggleTodo } from '../../services/todos';
+import './Todo.css';
 
 
 
@@ -40,7 +41,7 @@ export default function Todos() {
 
   return (
     <div>
-      <div>
+      <div className='add-todo'>
         <input
           type='text'
           value={description}
@@ -51,14 +52,14 @@ export default function Todos() {
       {todos.map((todo) => (
         <div key={todo.id}>
           <label>
-            <button onClick={() => handleDeleteTodo(todo.id)}>
-            X
-            </button>
             <input type="checkbox"
               checked={todo.complete}
               onChange={() => handleCompleteTodo(todo)} />
             {todo.description}
           </label>
+          <button className='delete' onClick={() => handleDeleteTodo(todo.id)}>
+            X
+          </button>
         </div>
       ))}
     </div>
