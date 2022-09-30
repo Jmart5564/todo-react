@@ -50,7 +50,7 @@ export default function Todos() {
         <button onClick={handleNewTodo}>Add Todo</button>
       </div>
       {todos.map((todo) => (
-        <div key={todo.id}>
+        <div className='todo' key={todo.id}>
           <label>
             <input type="checkbox"
               checked={todo.complete}
